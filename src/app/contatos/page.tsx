@@ -19,7 +19,7 @@ const images = [
   "/images/toto.png",
 ]
 
-  const whatsappNumber = "5511123456789" //
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
   const whatsappMessage = "Olá! Gostaria de mais informações sobre os serviços da MEV FESTAS."
 
 export default function ContatosPage() {
@@ -120,7 +120,7 @@ export default function ContatosPage() {
             </div>
             <div className="flex items-center space-x-2">
               <MessageCircle className="text-primary flex-shrink-0" />
-              <span className="text-sm sm:text-base">WhatsApp: (11) 98765-4321</span>
+              <span className="text-sm sm:text-base">WhatsApp: ${whatsappNumber}</span>
             </div>
             <Button 
               onClick={handleWhatsAppClick}
