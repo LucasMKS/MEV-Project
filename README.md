@@ -23,7 +23,6 @@ O projeto estará disponível em `http://localhost:3000`.
 - `pages/:` Contém as páginas da aplicação.
 - `components/:` Contém os componentes reutilizáveis.
 - `public/:` Contém os arquivos estáticos, como imagens.
-- `styles/:` Contém os arquivos de estilo.
 ## Tecnologias utilizadas
 
 **Front-end:** Next.js, Shadcn/UI
