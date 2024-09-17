@@ -19,8 +19,19 @@ const images = [
   "/images/toto.png",
 ]
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER
+const formatPhoneNumber = (whatsappNumber: string): string => {
+  const countryCode = whatsappNumber.slice(0, 2);
+  const areaCode = whatsappNumber.slice(2, 4);
+  const firstPart = whatsappNumber.slice(4, 9);
+  const secondPart = whatsappNumber.slice(9);
+
+  return `(${areaCode}) ${firstPart}-${secondPart}`;
+};
+
+  const whatsappNumber: string  = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5531987654321";
   const whatsappMessage = "Olá! Gostaria de mais informações sobre os serviços da MEV FESTAS."
+  const formattedNumber = formatPhoneNumber(whatsappNumber);
+
 
 export default function ContatosPage() {
   const [api, setApi] = useState<CarouselApi>()
@@ -112,7 +123,7 @@ export default function ContatosPage() {
             </div>
             <div className="flex items-center space-x-2">
               <Phone className="text-primary flex-shrink-0" />
-              <span className="text-sm sm:text-base">(11) 1234-5678</span>
+              <span className="text-sm sm:text-base">{formattedNumber}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="text-primary flex-shrink-0" />
@@ -120,7 +131,7 @@ export default function ContatosPage() {
             </div>
             <div className="flex items-center space-x-2">
               <MessageCircle className="text-primary flex-shrink-0" />
-              <span className="text-sm sm:text-base">WhatsApp: ${whatsappNumber}</span>
+              <span className="text-sm sm:text-base">WhatsApp: {whatsappNumber}</span>
             </div>
             <Button 
               onClick={handleWhatsAppClick}
